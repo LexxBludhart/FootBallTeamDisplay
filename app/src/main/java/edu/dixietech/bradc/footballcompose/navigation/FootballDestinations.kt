@@ -3,23 +3,20 @@ package edu.dixietech.bradc.footballcompose.navigation
 import androidx.navigation.NavType
 import androidx.navigation.navArgument
 
-interface FootballDestination {
+interface ViewDestination {
     val route: String
 }
 
-object Home : FootballDestination {
+object Home : ViewDestination {
     override val route = "home"
 }
 
-object Team : FootballDestination {
-    override val route = "team"
-    const val divisionNameArg = "division_name"
-    const val teamArg = "team_id"
-    val routeWithArgs = "$route/{$divisionNameArg/$teamArg}"
-    val arguments = listOf(
-        navArgument(divisionNameArg) { type = NavType.StringType},
-        navArgument(teamArg) { type = NavType.StringType}
+object Detail : ViewDestination {
+    override val route = "team_details"
+    const val teamDetailArg = "team_id"
+    val routeWithArgs = "$route/{$teamDetailArg}"
+    val arguments = listOf(navArgument(teamDetailArg) { type = NavType.IntType}
     )
 }
 
-val allScreens = listOf(Home, Team)
+val allScreens = listOf(Home, Detail)
