@@ -1,6 +1,7 @@
 package edu.dixietech.bradc.footballcompose.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import edu.dixietech.bradc.footballcompose.model.Team
 
 @Composable
-fun ListItem(item: Team) {
+fun ListItem(item: Team, onClickViewTeamDetails: (Int) -> Unit = {}) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -30,12 +31,13 @@ fun ListItem(item: Team) {
                     colors = item.colors.map { Color(it) }
                 )
             )
+            .clickable { onClickViewTeamDetails(item.id) }
     ) {
         Text(
             modifier = Modifier.padding(32.dp).align(Center),
             text = item.name,
             color = Color.White,
-            fontSize = 24.sp
+            fontSize = 24.sp,
         )
     }
 }
