@@ -1,7 +1,9 @@
 package edu.dixietech.bradc.footballcompose.navigation
 
+import androidx.compose.foundation.background
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -32,8 +34,8 @@ fun FootballNavHost(
             arguments = Detail.arguments
         ) { backStackEntry ->
             val teamId = backStackEntry.arguments?.getInt(Detail.teamDetailArg)
-            DetailScreen(viewModel, teamId)
-            route?.let { DetailScreen(viewModel, teamId) }
+            DetailScreen(viewModel, teamId, modifier)
+            route?.let { DetailScreen(viewModel, teamId, modifier) }
         }
     }
 }

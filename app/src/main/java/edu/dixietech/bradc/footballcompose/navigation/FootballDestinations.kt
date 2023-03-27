@@ -13,6 +13,7 @@ object Home : ViewDestination {
 
 object Detail : ViewDestination {
     override val route = "team_details"
+
     const val teamDetailArg = "team_id"
     val routeWithArgs = "$route/{$teamDetailArg}"
     val arguments = listOf(navArgument(teamDetailArg) { type = NavType.IntType}
