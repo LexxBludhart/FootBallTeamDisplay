@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">FootballCompose</string>
+    <string name="back_button">Back Button</string>
     <string name="content_description_back">Back Button</string>
 </resources>

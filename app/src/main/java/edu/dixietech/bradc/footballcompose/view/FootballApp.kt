@@ -31,30 +31,40 @@ fun FootballApp(viewModel: FootballViewModel, modifier: Modifier) {
 
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = {
-                        Text(
-                            text = "Football is life!",
-                            color = Color.White
-                        )
-                    },
-                    navigationIcon = {
-                        if (navController.previousBackStackEntry != null) {
-                            IconButton(onClick = {
-                                navController.navigateUp()
-                            }) {
-                                Icon(Icons.Rounded.ArrowBack, stringResource(R.string.content_description_back), tint = MaterialTheme.colorScheme.onPrimary)
-                            }
-                        }
-                    },
-                    colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primary)
-                )
+                TopBar(navController)
             },
-            ) { innerPadding ->
-//            FootballNavHost(navController, viewModel, Modifier.padding(innerPadding))
-            FootballNavHost(navController, viewModel, modifier.padding(top = 24.dp))
+            floatingActionButton =  {
+
+            },
+            bottomBar = {
+
+            },
+        )  { innerPadding ->
+            FootballNavHost(navController, viewModel = viewModel, modifier = modifier.padding(top = 24.dp))
         }
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun TopBar(navController: NavHostController) {
+    TopAppBar(
+        title = {
+            Text(
+                text = "Football is life!",
+                color = Color.White
+            )
+        },
+        navigationIcon = {
+            if (navController.previousBackStackEntry != null) {
+                IconButton(onClick = { navController.navigateUp() }) {
+                    Icon(Icons.Rounded.ArrowBack, stringResource(R.string.back_button), tint = MaterialTheme.colorScheme.onPrimary)
+                }
+            }
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primary)
+    )
 }
 
 //@OptIn(ExperimentalMaterial3Api::class)
