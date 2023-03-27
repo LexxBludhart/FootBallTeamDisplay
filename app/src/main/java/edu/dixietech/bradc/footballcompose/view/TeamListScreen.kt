@@ -22,7 +22,10 @@ fun TeamListScreen(
     modifier: Modifier,
     onClickViewTeamDetails: (Int) -> Unit = {}
 ) {
-    Surface(modifier = modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) { // Color(0xFF006666)) {// MaterialTheme.colorScheme.background) {
+    Surface(
+        modifier = modifier.fillMaxSize(),
+        color = MaterialTheme.colorScheme.background
+    ) {
         Column(
             modifier = modifier
                 .fillMaxWidth()
@@ -34,17 +37,16 @@ fun TeamListScreen(
             divisions.forEach { division ->
                 DivisionCard(divisionName = division.name)
 
-                teams.filter { team ->
-                    team.divisionId == division.id
+                teams.filter { filterTeam ->
+                    filterTeam.divisionId == division.id
                 }.forEach { team ->
                     key(team.id) {
-                        ListItem(item = team, onClickViewTeamDetails)
+                        TeamCard(team, onClickViewTeamDetails)
                     }
                 }
-            }
 
-            Spacer(Modifier.size(16.dp))
+                Spacer(Modifier.size(16.dp))
+            }
         }
     }
 }
-

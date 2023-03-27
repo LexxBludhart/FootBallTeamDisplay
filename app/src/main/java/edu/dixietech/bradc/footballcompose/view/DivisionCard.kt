@@ -26,7 +26,8 @@ fun DivisionCard(divisionName: String) {
             divisionName,
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Constants.nflBlue),
+                .background(Constants.nflBlue)
+                .padding(8.dp),
             fontSize = 36.sp,
             fontWeight = FontWeight.Bold,
             color = Constants.nflRed,

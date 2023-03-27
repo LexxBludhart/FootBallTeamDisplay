@@ -5,7 +5,7 @@ data class Team(
     val divisionId: Int = 0,
     val name: String = "",
     val colors: Array<Long> = arrayOf(),
-    val logo: String = ""
+    val logoUrl: String = ""
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
