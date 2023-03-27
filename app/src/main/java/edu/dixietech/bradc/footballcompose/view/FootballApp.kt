@@ -1,5 +1,6 @@
 package edu.dixietech.bradc.footballcompose.view
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -10,6 +11,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -20,7 +22,7 @@ import edu.dixietech.bradc.footballcompose.view_model.FootballViewModel
 
 @ExperimentalMaterial3Api
 @Composable
-fun FootballApp(viewModel: FootballViewModel, modifier: Modifier = Modifier) {
+fun FootballApp(viewModel: FootballViewModel, modifier: Modifier) {
     FootballComposeTheme {
         val navController = rememberNavController()
         val currentBackStack by navController.currentBackStackEntryAsState()
@@ -45,39 +47,40 @@ fun FootballApp(viewModel: FootballViewModel, modifier: Modifier = Modifier) {
                             }
                         }
                     },
-                    colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary),
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primary)
                 )
             },
             ) { innerPadding ->
-            FootballNavHost(navController, viewModel, Modifier.padding(innerPadding))
+//            FootballNavHost(navController, viewModel, Modifier.padding(innerPadding))
+            FootballNavHost(navController, viewModel, modifier.padding(top = 24.dp))
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopBar(controller: NavHostController) {
-    TopAppBar(
-        title = {
-            Text(stringResource(id = R.string.app_name), color = MaterialTheme.colorScheme.onPrimary)
-        },
-        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary),
-        navigationIcon = {
-            if (controller.previousBackStackEntry != null) {
-                IconButton(onClick = {
-                    controller.navigateUp()
-                }) {
-                    Icon(Icons.Rounded.ArrowBack, stringResource(id = R.string.content_description_back), tint = MaterialTheme.colorScheme.onPrimary)
-                }
-            }
-        },
-//        actions = {
-//            IconButton(onClick = { controller.navigate(Help.route) }) {
-//                Icon(Icons.Outlined.Info, stringResource(R.string.content_description_help), tint = MaterialTheme.colorScheme.onPrimary)
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun TopBar(controller: NavHostController) {
+//    TopAppBar(
+//        title = {
+//            Text(stringResource(id = R.string.app_name), color = MaterialTheme.colorScheme.onPrimary)
+//        },
+//        colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primary),
+//        navigationIcon = {
+//            if (controller.previousBackStackEntry != null) {
+//                IconButton(onClick = {
+//                    controller.navigateUp()
+//                }) {
+//                    Icon(Icons.Rounded.ArrowBack, stringResource(id = R.string.content_description_back), tint = MaterialTheme.colorScheme.onPrimary)
+//                }
 //            }
-//        }
-    )
-}
+//        },
+////        actions = {
+////            IconButton(onClick = { controller.navigate(Help.route) }) {
+////                Icon(Icons.Outlined.Info, stringResource(R.string.content_description_help), tint = MaterialTheme.colorScheme.onPrimary)
+////            }
+////        }
+//    )
+//}
 
 //@Composable
 //fun DisplayList(items: List<Team>) {
