@@ -11,26 +11,31 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import edu.dixietech.bradc.footballcompose.view_model.FootballViewModel
 
 
+@Destination
 @Composable
 fun DetailScreen(
-    viewModel: FootballViewModel,
-    teamId: Int?,
-    modifier: Modifier
+    viewModel: FootballViewModel = hiltViewModel(),
+    teamId: Int?
 ) {
     val team = viewModel.nflTeams.first { it.id == teamId }
+    val modifier = Modifier.fillMaxSize()
 
     Surface(modifier = modifier) {
         GradientView(colorValues = team.colors)
 
         // Try without column first...
         Column(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier,
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally) {
+
             Image(
                 painter = rememberAsyncImagePainter(team.logoUrl),
                 contentDescription = "NFL team image",

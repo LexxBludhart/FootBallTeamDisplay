@@ -1,5 +1,6 @@
 package edu.dixietech.bradc.footballcompose.view
 
+import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -13,17 +14,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import edu.dixietech.bradc.footballcompose.constants.Constants
 import edu.dixietech.bradc.footballcompose.view_model.FootballViewModel
 
+@RootNavGraph(start = true)
+@Destination
 @Composable
 fun TeamListScreen(
-    viewModel: FootballViewModel,
-    modifier: Modifier,
-    onClickViewTeamDetails: (Int) -> Unit = {}
+    navigator: DestinationsNavigator,
+    viewModel: FootballViewModel = hiltViewModel()
 ) {
+    val modifier = Modifier.fillMaxSize()
+
     Surface(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier,
         color = MaterialTheme.colorScheme.background
     ) {
         Column(
@@ -41,7 +49,7 @@ fun TeamListScreen(
                     filterTeam.divisionId == division.id
                 }.forEach { team ->
                     key(team.id) {
-                        TeamCard(team, onClickViewTeamDetails)
+                        TeamCard(navigator, viewModel, team)
                     }
                 }
 

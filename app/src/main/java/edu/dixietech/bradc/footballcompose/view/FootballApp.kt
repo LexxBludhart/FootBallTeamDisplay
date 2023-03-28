@@ -15,14 +15,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.ramcosta.composedestinations.DestinationsNavHost
 import edu.dixietech.bradc.footballcompose.R
-import edu.dixietech.bradc.footballcompose.navigation.FootballNavHost
 import edu.dixietech.bradc.footballcompose.ui.theme.FootballComposeTheme
 import edu.dixietech.bradc.footballcompose.view_model.FootballViewModel
 
 @ExperimentalMaterial3Api
 @Composable
-fun FootballApp(viewModel: FootballViewModel, modifier: Modifier) {
+fun FootballApp() {
     FootballComposeTheme {
         val navController = rememberNavController()
         val currentBackStack by navController.currentBackStackEntryAsState()
@@ -40,7 +40,8 @@ fun FootballApp(viewModel: FootballViewModel, modifier: Modifier) {
 
             },
         )  { innerPadding ->
-            FootballNavHost(navController, viewModel = viewModel, modifier = modifier.padding(top = 24.dp))
+            DestinationsNavHost(navGraph = NavGraphs.root)
+//            FootballNavHost(navController, viewModel = viewModel, modifier = modifier.padding(top = 24.dp))
         }
     }
 }

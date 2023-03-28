@@ -1,11 +1,13 @@
 package edu.dixietech.bradc.footballcompose.view_model
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import edu.dixietech.bradc.footballcompose.model.Division
 import edu.dixietech.bradc.footballcompose.model.Team
+import javax.inject.Inject
 
-class FootballViewModel() : ViewModel() {
-
+@HiltViewModel
+class FootballViewModel @Inject constructor() : ViewModel() {
     val nflDivisions = divisions
     val nflTeams = teams
 
