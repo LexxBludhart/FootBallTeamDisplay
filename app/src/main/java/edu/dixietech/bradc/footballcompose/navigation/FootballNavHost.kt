@@ -9,6 +9,10 @@ import edu.dixietech.bradc.footballcompose.view.DetailScreen
 import edu.dixietech.bradc.footballcompose.view.TeamListScreen
 import edu.dixietech.bradc.footballcompose.view_model.FootballViewModel
 
+
+// Using raamcosta's DestinationNavigation instead
+
+
 //@Composable
 //fun FootballNavHost(
 //    navController: NavHostController,

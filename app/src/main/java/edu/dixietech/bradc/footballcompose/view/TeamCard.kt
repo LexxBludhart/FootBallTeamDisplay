@@ -23,7 +23,6 @@ import edu.dixietech.bradc.footballcompose.view_model.FootballViewModel
 @Composable
 fun TeamCard(
     navigator: DestinationsNavigator,
-    viewModel: FootballViewModel,
     team: Team
 ) {
     Box(
@@ -31,16 +30,13 @@ fun TeamCard(
             .fillMaxWidth()
             .padding(4.dp)
             .height(128.dp)
-//            .background(color = Color(team.color.first()))
             .background(brush = Brush.verticalGradient(
                 colors = team.colors.map { Color(it) }
             ))
             .clickable {
                 navigator.navigate(
                     DetailScreenDestination(team.id)
-//                    DetailScreenDestination(navigator, viewModel, team.id, Modifier)
                 )
-//                onClickViewTeamDetails(team.id)
             }
     ) {
         Text(

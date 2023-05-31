@@ -23,7 +23,6 @@ fun GradientView(colorValues: Array<Long>) {
                 colors = colors,
                 center = size.center,
                 radius = biggestSide / 2f
-//                colorStops = listOf() // numItems must match color items
             )
         }
     }

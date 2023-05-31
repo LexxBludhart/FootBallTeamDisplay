@@ -52,7 +52,7 @@ fun TopBar(navController: NavHostController) {
     TopAppBar(
         title = {
             Text(
-                text = "Football is life!",
+                text = "Football is love, Football is life.",
                 color = Color.White
             )
         },

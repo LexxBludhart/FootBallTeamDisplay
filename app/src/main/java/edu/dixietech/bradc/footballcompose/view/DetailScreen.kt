@@ -30,7 +30,6 @@ fun DetailScreen(
     Surface(modifier = modifier) {
         GradientView(colorValues = team.colors)
 
-        // Try without column first...
         Column(
             modifier = modifier,
             verticalArrangement = Arrangement.Center,

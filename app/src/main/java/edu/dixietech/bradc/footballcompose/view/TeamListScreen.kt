@@ -49,7 +49,7 @@ fun TeamListScreen(
                     filterTeam.divisionId == division.id
                 }.forEach { team ->
                     key(team.id) {
-                        TeamCard(navigator, viewModel, team)
+                        TeamCard(navigator, team)
                     }
                 }
 
